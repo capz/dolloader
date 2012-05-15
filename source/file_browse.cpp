@@ -28,7 +28,7 @@ bool nameEndsWith (const string& name, const vector<string> extensionList) {
 
 	if (extensionList.size() == 0) return true;
 
-	for (int i = 0; i < (int)extensionList.size(); i++) {
+	for (unsigned int i = 0; i < extensionList.size(); i++) {
 		const string ext = extensionList.at(i);
 		if ( strcasecmp (name.c_str() + name.size() - ext.size(), ext.c_str()) == 0) return true;
 	}
