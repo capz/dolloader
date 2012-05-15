@@ -82,6 +82,7 @@ void setArgv (int argc, const char **argv, char *argStart, struct __argv *dol_ar
 	dol_argv->length = argSize;
 	
 	DCFlushRange ((void *) argStart, argSize);
+	DCFlushRange ((void *) dol_argv, sizeof(struct __argv));
 }
 
 bool runDOL (const char* filename, int argc, const char** argv) {
@@ -107,8 +108,6 @@ bool runDOL (const char* filename, int argc, const char** argv) {
 		argv = args;
 	}
 	
-	printf("file size is %lld\n", st.st_size);
-	
 	FILE *dolFile = fopen(filename,"rb");
 	if ( dolFile == NULL ) return false;
 
@@ -125,6 +124,8 @@ bool runDOL (const char* filename, int argc, const char** argv) {
 				if ( entryPoint[1] == ARGV_MAGIC ) {
 					setArgv( argc, argv, argvBuffer, (struct __argv*)&entryPoint[2]);
 				}
+
+				fclose(dolFile);
 
 				SYS_ResetSystem(SYS_SHUTDOWN,0,0);
 
