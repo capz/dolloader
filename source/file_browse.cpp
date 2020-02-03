@@ -195,6 +195,6 @@ string browseForFile (const vector<string> extensionList) {
 			showDirectoryContents (dirContents, screenOffset);
 		}
 		
-		if (pressed & BUTTON_REBOOT ) exit(0);
+		if (pressed & PAD_BUTTON_START) exit(0);
 	}
 }

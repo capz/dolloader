@@ -7,7 +7,7 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPPC")
 endif
 
-include $(DEVKITPPC)/wii_rules
+include $(DEVKITPPC)/gamecube_rules
 
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output
@@ -15,7 +15,7 @@ include $(DEVKITPPC)/wii_rules
 # SOURCES is a list of directories containing source code
 # INCLUDES is a list of directories containing extra header files
 #---------------------------------------------------------------------------------
-TARGET		:=	boot
+TARGET		:=	puppetmaster
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data  
@@ -28,12 +28,12 @@ INCLUDES	:=
 CFLAGS	= -g -O2 -Wall $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
-LDFLAGS	=	-s -g $(MACHDEP) -Wl,--section-start,.init=0x81200000 -Wl,-Map,$(notdir $@).map
+LDFLAGS	=	-g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lfat -lwiiuse -lbte -logc -lm
+LIBS	:= -ldb -lbba -lfat -logc -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

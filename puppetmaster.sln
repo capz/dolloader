@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "puppetmaster", "puppetmaster.vcxproj", "{6C2E28C7-6F77-4418-9D9D-B9857A297E31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C2E28C7-6F77-4418-9D9D-B9857A297E31}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C2E28C7-6F77-4418-9D9D-B9857A297E31}.Release|x86.ActiveCfg = Release|Win32
+		{6C2E28C7-6F77-4418-9D9D-B9857A297E31}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9DE3705-E4F8-4590-9759-37FA967287F5}
+	EndGlobalSection
+EndGlobal

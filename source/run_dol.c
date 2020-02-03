@@ -7,7 +7,7 @@
 #include <fat.h>
 
 #include <stdio.h>
-
+#define MAXPATHLEN 512
 
 typedef struct _dol_header_t {
 	u32 textFileAddress[7];
