@@ -27,6 +27,9 @@
     <ClCompile Include="source\run_dol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\dns.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\file_browse.h">
@@ -37,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="source\run_dol.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\dns.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
