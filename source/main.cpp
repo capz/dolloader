@@ -27,7 +27,7 @@ u32 first_frame = 1;
 GXRModeObj* rmode;
 
 FILE* logFileHandle = nullptr;
-#define LOGBUFFERSIZE 5
+#define LOGBUFFERSIZE 10
 std::string logbuffer[LOGBUFFERSIZE];
 int logEntries = 0;
 
@@ -43,13 +43,6 @@ void exitLog() {
 	if (logFileHandle == nullptr) return;
 	fclose(logFileHandle);
 	logFileHandle = nullptr;
-}
-void simple_log(std::string message) {
-	//time_t now = time(0);
-	// convert now to string form
-	/*std::string timestring(ctime(&now));*/
-	std::string m(message + "\n");
-	fwrite(m.c_str(), sizeof(char), sizeof(char) * m.length(), logFileHandle);
 }
 void log_flush() {
 	if ((logEntries % LOGBUFFERSIZE) == (LOGBUFFERSIZE - 1)) {
@@ -123,6 +116,20 @@ void bbaConfig() {
 	}
 	log("done", true);
 }
+void printAddress(sockaddr_in address) {
+	log("Addr family: ");
+	switch (address.sin_family) {
+	case AF_INET: log("TCPIP version 4"); break;
+	default:
+		log(" - UNSPECIFIED");
+			break;
+	}
+	char ip[30];
+	strcpy(ip, (char*)inet_ntoa((struct in_addr)address.sin_addr));
+	log(std::string("Addr ip: ") + ip);
+	log(std::string("Addr port: ") + std::to_string(address.sin_port));
+}
+//the headers used have been tested using firefox and work for making the request
 int downloadFile(std::string apiEndpoint, std::string filename) {
 	int sock_descriptor; // integer number to access socket
 	log("endpoint dns lookup...", true);
@@ -131,7 +138,7 @@ int downloadFile(std::string apiEndpoint, std::string filename) {
 	//struct hostent* server; // from netdb.h to determine host name out of ip address
 	char recvBuff[1024];  // Receiving buffer
 	std::string header = "GET " + apiEndpoint + " HTTP/1.1"
-		"User-Agent: PuppetMaster/1.0 (Nintendo Gamecube; PPC32)\n"
+		"User-Agent: PuppetMaster/0.1 (Nintendo Gamecube; PPC32)\n"
 		"Accept-Encoding: gzip, deflate, br\n"
 		"Accept-Language: en-GB,en;q=0.8,en-US;q=0.6,da;q=0.4\n"
 		"Connection: keep-alive\n"
